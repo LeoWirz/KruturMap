@@ -1,0 +1,20 @@
+Setting,Customize,Hints,Examples
+Storymap Info,,"For help, see tutorial in HandsOnDataViz.org  -->",https://handsondataviz.org/leaflet-storymaps-with-google-sheets.html
+Storymap Title,Fribourg Map,,
+Storymap Subtitle,Krultur,,
+Storymap Logo,,Path to a logo image,
+Google Analytics Tracking ID,,Eg UA-5488840-29,
+Map Settings,,"For help, see tutorial in HandsOnDataViz.org  -->",https://handsondataviz.org/leaflet-storymaps-with-google-sheets.html
+Basemap Tiles,CartoDB.Positron,Drop-down menu for background basemap tiles,https://leaflet-extras.github.io/leaflet-providers/preview/
+Zoom Controls,bottomright,,
+Narrative Background Color,,,
+Narrative Text Color,,,
+Narrative Link Color,,,
+Active Chapter Background Color,,,
+Media Container Height,300,"Maximum height of the image, in pixels. 200 is default. The image will be fit into the container with its proportions kept (it won't be skewed).",
+Pixels After Final Chapter,600,In pixels. At least 100,
+Credits,,"For help, see tutorial in HandsOnDataViz.org  -->",https://handsondataviz.org/leaflet-storymaps-with-google-sheets.html
+Author Name,Leonardo Wirz ,"Appears in map credits as ""View data by..."" (or leave blank)",
+Author Email or Website,,Create link in Author Name by inserting your email or web address (or leave blank),
+Author GitHub Repo Link,https://github.com/handsondataviz/leaflet-storymaps-with-google-sheets,"Insert your code repo URL to appear as link in ""View code..."" (or leave blank)",
+Code Credit,"<a href=""https://handsondataviz.org"">HandsOnDataViz</a>","Appears in credits as ""...code by..."" (or leave blank)",

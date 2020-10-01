@@ -1,4 +1,4 @@
-$(window).on('load', function() {
+$(window).on('load', function () {
   var documentSettings = {};
 
   // Some constants, such as default settings
@@ -6,42 +6,42 @@ $(window).on('load', function() {
 
   // This watches for the scrollable container
   var scrollPosition = 0;
-  $('div#contents').scroll(function() {
+  $('div#contents').scroll(function () {
     scrollPosition = $(this).scrollTop();
   });
 
   // First, try reading Options.csv
-  $.get('csv/Options.csv', function(options) {
+  $.get('csv/Options.csv', function (options) {
 
-    $.get('csv/Chapters.csv', function(chapters) {
+    $.get('csv/Chapters.csv', function (chapters) {
       initMap(
         $.csv.toObjects(options),
         $.csv.toObjects(chapters)
       )
-    }).fail(function(e) { alert('Found Options.csv, but could not read Chapters.csv') });
+    }).fail(function (e) { alert('Found Options.csv, but could not read Chapters.csv') });
 
-  // If not available, try from the Google Sheet
-  }).fail(function(e) {
+    // If not available, try from the Google Sheet
+  }).fail(function (e) {
 
-    var parse = function(res) {
-      return Papa.parse(Papa.unparse(res[0].values), {header: true} ).data;
+    var parse = function (res) {
+      return Papa.parse(Papa.unparse(res[0].values), { header: true }).data;
     }
-  
+
     // First, try reading data from the Google Sheet
     if (typeof googleDocURL !== 'undefined' && googleDocURL) {
-  
+
       if (typeof googleApiKey !== 'undefined' && googleApiKey) {
-  
+
         var apiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/'
         var spreadsheetId = googleDocURL.split('/d/')[1].split('/')[0];
-  
+
         $.when(
           $.getJSON(apiUrl + spreadsheetId + '/values/Options?key=' + googleApiKey),
           $.getJSON(apiUrl + spreadsheetId + '/values/Chapters?key=' + googleApiKey),
-        ).then(function(options, chapters) {
+        ).then(function (options, chapters) {
           initMap(parse(options), parse(chapters))
         })
-  
+
       } else {
         alert('You load data from a Google Sheet, you need to add a free Google API key')
       }
@@ -49,7 +49,7 @@ $(window).on('load', function() {
     } else {
       alert('You need to specify a valid Google Sheet (googleDocURL)')
     }
-  
+
   })
 
 
@@ -125,7 +125,7 @@ $(window).on('load', function() {
 
     var markers = [];
 
-    var markActiveColor = function(k) {
+    var markActiveColor = function (k) {
       /* Removes marker-active class from all markers */
       for (var i = 0; i < markers.length; i++) {
         if (markers[i] && markers[i]._icon) {
@@ -149,7 +149,7 @@ $(window).on('load', function() {
     for (i in chapters) {
       var c = chapters[i];
 
-      if ( !isNaN(parseFloat(c['Latitude'])) && !isNaN(parseFloat(c['Longitude']))) {
+      if (!isNaN(parseFloat(c['Latitude'])) && !isNaN(parseFloat(c['Longitude']))) {
         var lat = parseFloat(c['Latitude']);
         var lon = parseFloat(c['Longitude']);
 
@@ -165,7 +165,7 @@ $(window).on('load', function() {
             opacity: c['Marker'] === 'Hidden' ? 0 : 0.9,
             interactive: c['Marker'] === 'Hidden' ? false : true,
           }
-        ));
+          ));
 
       } else {
         markers.push(null);
@@ -262,11 +262,11 @@ $(window).on('load', function() {
     // For each block (chapter), calculate how many pixels above it
     pixelsAbove[0] = -100;
     for (i = 1; i < chapters.length; i++) {
-      pixelsAbove[i] = pixelsAbove[i-1] + $('div#container' + (i-1)).height() + chapterContainerMargin;
+      pixelsAbove[i] = pixelsAbove[i - 1] + $('div#container' + (i - 1)).height() + chapterContainerMargin;
     }
     pixelsAbove.push(Number.MAX_VALUE);
 
-    $('div#contents').scroll(function() {
+    $('div#contents').scroll(function () {
       var currentPosition = $(this).scrollTop();
 
       // Make title disappear on scroll
@@ -275,9 +275,9 @@ $(window).on('load', function() {
       }
 
       for (var i = 0; i < pixelsAbove.length - 1; i++) {
-        
-        if ( currentPosition >= pixelsAbove[i]
-          && currentPosition < (pixelsAbove[i+1] - 2 * chapterContainerMargin)
+
+        if (currentPosition >= pixelsAbove[i]
+          && currentPosition < (pixelsAbove[i + 1] - 2 * chapterContainerMargin)
           && currentlyInFocus != i
         ) {
           // Remove styling for the old in-focus chapter and
@@ -306,9 +306,9 @@ $(window).on('load', function() {
             var url = c['Overlay'];
 
             if (url.split('.').pop() == 'geojson') {
-              $.getJSON(url, function(geojson) {
+              $.getJSON(url, function (geojson) {
                 overlay = L.geoJson(geojson, {
-                  style: function(feature) {
+                  style: function (feature) {
                     return {
                       fillColor: feature.properties.COLOR,
                       weight: 1,
@@ -320,13 +320,13 @@ $(window).on('load', function() {
                 }).addTo(map);
               });
             } else {
-              overlay = L.tileLayer(c['Overlay'], {opacity: opacity}).addTo(map);
+              overlay = L.tileLayer(c['Overlay'], { opacity: opacity }).addTo(map);
             }
 
           }
 
           if (c['GeoJSON Overlay']) {
-            $.getJSON(c['GeoJSON Overlay'], function(geojson) {
+            $.getJSON(c['GeoJSON Overlay'], function (geojson) {
 
               // Parse properties string into a JS object
               var props = {};
@@ -336,13 +336,13 @@ $(window).on('load', function() {
                 var props = {};
                 for (var p in propsArray) {
                   if (propsArray[p].split(':').length === 2) {
-                    props[ propsArray[p].split(':')[0].trim() ] = propsArray[p].split(':')[1].trim();
+                    props[propsArray[p].split(':')[0].trim()] = propsArray[p].split(':')[1].trim();
                   }
                 }
               }
 
               geoJsonOverlay = L.geoJson(geojson, {
-                style: function(feature) {
+                style: function (feature) {
                   return {
                     fillColor: feature.properties.COLOR || props.fillColor || 'white',
                     weight: props.weight || 1,
@@ -407,10 +407,11 @@ $(window).on('load', function() {
       if (markers[i]) {
         markers[i].addTo(map);
         markers[i]['_pixelsAbove'] = pixelsAbove[i];
-        markers[i].on('click', function() {
+        markers[i].on('click', function () {
           var pixels = parseInt($(this)[0]['_pixelsAbove']) + 5;
           $('div#contents').animate({
-            scrollTop: pixels + 'px'});
+            scrollTop: pixels + 'px'
+          });
         });
         bounds.push(markers[i].getLatLng());
       }
@@ -421,18 +422,18 @@ $(window).on('load', function() {
     $('div.loader').css('visibility', 'hidden');
 
     $('div#container0').addClass("in-focus");
-    $('div#contents').animate({scrollTop: '1px'});
+    $('div#contents').animate({ scrollTop: '1px' });
 
 
     // Add Google Analytics if the ID exists
     var ga = getSetting('_googleAnalytics');
-    if ( ga && ga.length >= 10 ) {
+    if (ga && ga.length >= 10) {
       var gaScript = document.createElement('script');
-      gaScript.setAttribute('src','https://www.googletagmanager.com/gtag/js?id=' + ga);
+      gaScript.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=' + ga);
       document.head.appendChild(gaScript);
-  
+
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', ga);
     }
@@ -450,7 +451,7 @@ $(window).on('load', function() {
       // Show Google Sheet URL if the variable exists and is not empty, otherwise link to Chapters.csv
       + (typeof googleDocURL !== 'undefined' && googleDocURL ? googleDocURL : './csv/Chapters.csv')
       + '" target="_blank">data</a>';
-    
+
     var name = getSetting('_authorName');
     var url = getSetting('_authorURL');
 
