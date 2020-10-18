@@ -40,6 +40,15 @@
     <div id="header"></div>
   </div>
 
+  <div id="category">
+    <div id="top"></div>
+    <div id="category-filter-1" class="category-filter" onclick="filterSelection('all')">Musique</div>
+    <div id=" category-filter-2" class="category-filter" onclick="filterSelection('all')">Art Visuel</div>
+    <div id="category-filter-3" class="category-filter">Design</div>
+    <div id="category-filter-3" class="category-filter">Art scénique</div>
+    <div id="category-filter-3" class="category-filter">Histoire</div>
+  </div>
+
   <div id="narration">
     <div id="contents">
       <div id="top"></div>
@@ -56,7 +65,6 @@
       zoom: 15,
       scrollWheelZoom: true,
       zoomControl: false,
-      // maxBounds: new L.LatLngBounds(new L.LatLng(46.7835, 7.0985), new L.LatLng(46.8365, 7.1865))
     });
   </script>
 
@@ -65,6 +73,7 @@
   <script type="text/javascript" src="scripts/constants.js"></script>
   <script type="text/javascript" src="scripts/jquery.csv.js"></script>
   <script type="text/javascript" src="scripts/storymap.js"></script>
+  <script type="text/javascript" src="scripts/filter.js"></script>
 
 </body>
 

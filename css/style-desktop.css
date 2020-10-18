@@ -1,22 +1,28 @@
 @media screen and (min-width: 768px) {
 
-  #narration {
-    width: 60vw;
+  #category {
+    width: 200px;
     height: 100vh;
-    max-width: 500px;
     top: 0;
   }
 
   #map {
-    width: calc(100vw - 460px);
-    left: 460px;
+    width: max(calc(70vw - 200px), calc(100vw - 700px));
+    left: 200px;
     height: 100vh;
     border: 0;
     z-index: 0;
   }
 
+  #narration {
+    width: 30vw;
+    height: 100vw;
+    max-width: 500px;
+    top: 0;
+  }
+
   #title {
-    width: 60vw;
+    width: 30vw;
     max-width: 500px;
     top: 0;
   }

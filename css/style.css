@@ -14,12 +14,22 @@ body {
   left: 0;
 }
 
+#category {
+  position: absolute;
+  top: 203px;
+  width: 100vw;
+  height: calc(100vh - 203px);
+  z-index: 80;
+  left: 0;
+}
+
 #narration {
   position: absolute;
   top: 203px;
   width: 100vw;
   height: calc(100vh - 203px);
   z-index: 80;
+  right: 0;
 }
 
 #contents {
@@ -47,7 +57,7 @@ body {
 
 #title {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 203px;
   background-color: white;
   width: 100vw;
@@ -56,6 +66,14 @@ body {
   padding: 0;
   visibility: hidden;
   font-weight: bold;
+  text-align: center;
+}
+
+.category-filter {
+  /* margin + padding = chapterContainerMargin in script.js */
+  /* Important for scrolling! */
+  margin: 50px 0 0 0;
+  padding: 20px 0 0 0;
   text-align: center;
 }
 
@@ -163,7 +181,7 @@ a.source:visited {
 #header {
   padding: 5px 0;
   text-align: center;
-  color: #333;
+  color: #ffffff;
 }
 
 /* Storymap title & subtitle */

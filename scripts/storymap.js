@@ -90,9 +90,10 @@ $(window).on('load', function () {
    */
   function addBaseMap() {
     var basemap = trySetting('_tileProvider', 'Stamen.TonerLite');
-    L.tileLayer.provider(basemap, {
+    var tyleLayer = L.tileLayer.provider(basemap, {
       maxZoom: 18
-    }).addTo(map);
+    })
+    tyleLayer.addTo(map);
   }
 
   function initMap(options, chapters) {
@@ -146,6 +147,13 @@ $(window).on('load', function () {
     var overlay;  // URL of the overlay for in-focus chapter
     var geoJsonOverlay;
 
+
+    var musicLayerGroup = new L.LayerGroup();
+    var visualArtLayerGroup = new L.LayerGroup();
+    var designLayerGroup = new L.LayerGroup();
+    var scenicArtLayerGroup = new L.LayerGroup();
+    var historyLayerGroup = new L.LayerGroup();
+
     for (i in chapters) {
       var c = chapters[i];
 
@@ -155,17 +163,34 @@ $(window).on('load', function () {
 
         chapterCount += 1;
 
-        markers.push(
-          L.marker([lat, lon], {
-            icon: L.ExtraMarkers.icon({
-              icon: 'fa-number',
-              number: c['Marker'] === 'Plain' ? '' : chapterCount,
-              markerColor: c['Marker Color'] || 'blue'
-            }),
-            opacity: c['Marker'] === 'Hidden' ? 0 : 0.9,
-            interactive: c['Marker'] === 'Hidden' ? false : true,
-          }
-          ));
+        var tempMarker = L.marker([lat, lon], {
+          icon: L.ExtraMarkers.icon({
+            icon: 'fa-number',
+            number: c['Marker'] === 'Plain' ? '' : chapterCount,
+            markerColor: c['Marker Color'] || 'blue'
+          }),
+          opacity: c['Marker'] === 'Hidden' ? 0 : 0.9,
+          interactive: c['Marker'] === 'Hidden' ? false : true,
+        })
+
+        markers.push(tempMarker);
+
+
+        if (c['Musique']) {
+          musicLayerGroup.addLayer(tempMarker)
+        }
+        if (c['Art Visuel']) {
+          visualArtLayerGroup.addLayer(tempMarker)
+        }
+        if (c['Design']) {
+          designLayerGroup.addLayer(tempMarker)
+        }
+        if (c['Art scenique']) {
+          scenicArtLayerGroup.addLayer(tempMarker)
+        }
+        if (c['Histoire']) {
+          historyLayerGroup.addLayer(tempMarker)
+        }
 
       } else {
         markers.push(null);
@@ -247,6 +272,35 @@ $(window).on('load', function () {
       $('#contents').append(container);
 
     }
+
+    var overlayMaps = {
+      "Musique": musicLayerGroup,
+      "Art visuel": visualArtLayerGroup,
+      "Design": designLayerGroup,
+      "Art scenique": scenicArtLayerGroup,
+      "Histoire": historyLayerGroup
+    };
+
+    L.control.layers(null, overlayMaps).addTo(map);
+    musicLayerGroup.addTo(map);
+    visualArtLayerGroup.addTo(map);
+    designLayerGroup.addTo(map);
+    scenicArtLayerGroup.addTo(map);
+    historyLayerGroup.addTo(map);
+
+
+    // var basemap = trySetting('_tileProvider', 'Stamen.TonerLite');
+    // var tyleLayer = L.tileLayer.provider(basemap, {
+    //   maxZoom: 18
+    // })
+    // tyleLayer.addTo(map);
+
+    // //Control on the Top Left that handles the switching between A and B
+    // var overlayMaps = {
+    //   "A": musicLayerGroup,
+    //   "B": designLayerGroup
+    // };
+    // L.control.layers(tyleLayer, overlayMaps, { position: 'topleft' }).addTo(map);
 
     changeAttribution();
 
@@ -381,7 +435,7 @@ $(window).on('load', function () {
     $("<style>")
       .prop("type", "text/css")
       .html("\
-      #narration, #title {\
+      #narration, #title, #category {\
         background-color: " + trySetting('_narrativeBackground', 'white') + "; \
         color: " + trySetting('_narrativeText', 'black') + "; \
       }\
@@ -418,7 +472,7 @@ $(window).on('load', function () {
     }
     map.fitBounds(bounds);
 
-    $('#map, #narration, #title').css('visibility', 'visible');
+    $('#map, #narration, #title, #category').css('visibility', 'visible');
     $('div.loader').css('visibility', 'hidden');
 
     $('div#container0').addClass("in-focus");
