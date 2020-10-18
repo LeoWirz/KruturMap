@@ -1,11 +1,10 @@
-Chapter,Media Link,Media Credit,Media Credit Link,Description,Zoom,Marker,Marker Color,Location,Latitude,Longitude,Overlay,Overlay Transparency,GeoJSON Overlay,GeoJSON Feature Properties
-Bienvenu,,,,,,,,,,,,,,
-Le Nouveau Monde,media/nouveaumonde.jpg,https://nouveaumonde.ch/en/association,https://nouveaumonde.ch/fr,"Renaissance
-  du Nouveau Monde dans le tout nouveau centre culturel de la ville de
-  Fribourg, l'Ancienne Gare. Désormais, l'organisation dispose d'une salle de
-  concert de 300 places, entièrement modulable, et de bureaux adaptés à ses
-  besoins. C'est le début d'une nouvelle époque pour l'association.",15,Numbered,blue,"Esplanade de l'Ancienne Gare 3, 1700 Fribourg",46.802012,7.150291,,,,
-Fri-Son,media/frison.jpg,Source: http://www.laliberte.ch/info-regionale/justice/des-fenetres-pourront-etre-ouvertes-sur-fri-son-469816,https://fri-son.ch/fr,"Fri-Son est organisée en association bilingue à but non lucratif conduite par un comité élu par l'assemblée générale des membres. Aujourd’hui, une équipe fixe de huit employé.e.s* travaille à Fri-Son. Une douzaine de groupes de travail sont chargés de la gestion et du déroulement des concerts et des soirées. Environ 200 collaborateur.rice.s* et bénévoles forment la famille Fri-Son.",15,Numbered,blue,"Route de la Fonderie 13, 1700 Fribourg",46.795041,7.151385,,,,
+Chapter,Media Link,Media Credit,Media Credit Link,Description,Zoom,Marker,Marker Color,Location,Latitude,Longitude,Overlay,Overlay Transparency,GeoJSON Overlay,GeoJSON Feature Properties,Musique,Art VIsuel,Design,Art sc�nique,Histoire
+Bienvenu,,,,,,,,,,,,,,,,,,,
+Le Nouveau Monde,media/nouveaumonde.jpg,https://nouveaumonde.ch/en/association,https://nouveaumonde.ch/fr,"Renaissance du Nouveau Monde dans le tout nouveau centre culturel de la ville de Fribourg, l'Ancienne Gare. 
+Désormais, l'organisation dispose d'une salle de concert de 300 places, entièrement modulable, et de bureaux adaptés à ses besoins. 
+C'est le début d'une nouvelle époque pour l'association.",15,Numbered,blue,"Esplanade de l'Ancienne Gare 3, 1700 Fribourg",46.802012,7.150291,,,,,x,,,x,
+Fri-Son,media/frison.jpg,Source: http://www.laliberte.ch/info-regionale/justice/des-fenetres-pourront-etre-ouvertes-sur-fri-son-469816,https://fri-son.ch/fr,"Fri-Son est organisée en association bilingue à but non lucratif conduite par un comité élu par l'assemblée générale des membres. Aujourd’hui, une équipe fixe de huit employé.e.s* travaille à Fri-Son. Une douzaine de groupes de travail sont chargés de la gestion et du déroulement des concerts et des soirées. Environ 200 collaborateur.rice.s* et bénévoles forment la famille Fri-Son.",15,Numbered,blue,"Route de la Fonderie 13, 1700 Fribourg",46.795041,7.151385,,,,,x,,,x,
+Mus�e Gutenberg,,,https://www.gutenbergmuseum.ch/,Le Mus�e Gutenberg est dirig� par la ��Soci�t� du Mus�e Gutenberg�� dont le si�ge est � Fribourg.,15,Numbered,orange,"Liebfrauenplatz 16, 1702 Fribourg",46.807267,7.161774,,,,,,,x,,x
 Jo.,media/Jo-bar+de+quartier.jpeg,https://www.jobardequartier.ch/,https://www.jobardequartier.ch/,"tout
   est dans le titre… 
     
@@ -25,8 +24,5 @@ Jo.,media/Jo-bar+de+quartier.jpeg,https://www.jobardequartier.ch/,https://www.jo
     Il y a biensûr Jonas, Pierre parfois Ben et Léo et toutes les extras qui
   viennent porter main forte!
     
-    A bientôt les amis au coin du bar !
-    YouTube videos. Audio files must be mp3 (recommended),
-    ogg, or wav: the map will generate an &lt;audio&gt; tag fo
-     them instead of &lt;img&gt;.",15,Numbered,red,"Rue du Criblet 11, 1700 Fribourg",46.805109,7.154151,,,,
-TODO: suite,,,,,,,,,,,,,,
+    A bientôt les amis au coin du bar !",15,Numbered,red,"Rue du Criblet 11, 1700 Fribourg",46.805109,7.154151,,,,,x,,,,
+TODO: suite,,,,,,,,,,,,,,,,,,,

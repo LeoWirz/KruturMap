@@ -25,8 +25,10 @@ body {
 #contents {
   padding: 0;
   width: 100%;
-  margin-top: 0; /*Adjust if Title header needs more space */
-  height: 100%; /* Adjust to fit max Description length, one setting for all; alternative is 100% */
+  margin-top: 0;
+  /*Adjust if Title header needs more space */
+  height: 100%;
+  /* Adjust to fit max Description length, one setting for all; alternative is 100% */
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -107,6 +109,7 @@ body {
   font-style: italic;
   color: gray;
 }
+
 a.source:visited {
   color: grey;
 }
@@ -139,7 +142,7 @@ a.source:visited {
   If you want to change the color, see options here: https://github.com/coryasilva/Leaflet.ExtraMarkers/blob/master/src/assets/css/leaflet.extra-markers.css
 */
 .marker-active {
-  background-position: -72px 0 !important;
+  background-position: -468px 0 !important;
 }
 
 /* Storymap logo image above the title */
